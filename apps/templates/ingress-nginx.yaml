@@ -1,24 +1,29 @@
-# apiVersion: argoproj.io/v1alpha1
-# kind: Application
-# metadata:
-#   name: ingress-nginx
-#   namespace: default
-#   finalizers:
-#   - resources-finalizer.argocd.argoproj.io
-# spec:
-#   destination:
-#     server: https://kubernetes.default.svc
-#     namespace: default
-#   project: default
-#   source:
-#     chart: ingress-nginx
-#     helm:
-#       # values: |
-#       #   pushgateway:
-#       #     enabled: false
-#     repoURL: https://kubernetes.github.io/ingress-nginx
-#     targetRevision: 3.20.1
-#   syncPolicy:
-#     automated:
-#       prune: true
-#       selfHeal: true
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ingress-nginx
+  namespace: default
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+  project: default
+  source:
+    chart: ingress-nginx
+    helm:
+      values: |
+        controller:
+          service:
+            internal:
+              enabled: true
+              annotations:
+                # Create internal ELB
+                service.beta.kubernetes.io/aws-load-balancer-internal: 0.0.0.0/0
+    repoURL: https://kubernetes.github.io/ingress-nginx
+    targetRevision: 3.20.1
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
