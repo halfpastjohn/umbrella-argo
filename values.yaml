@@ -66,8 +66,3 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
-
-# Enabling redis service, by default
-redis:
-  enabled: true
-  usePassword: false
