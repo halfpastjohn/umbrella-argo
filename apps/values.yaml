@@ -1,0 +1,13 @@
+controller:
+  config:
+    use-proxy-protocol: "true"
+  service:
+    annotations:
+      service.beta.kubernetes.io/aws-load-balancer-internal: 0.0.0.0/0
+      service.beta.kubernetes.io/aws-load-balancer-proxy-protocol: "*"
+      service.beta.kubernetes.io/aws-load-balancer-connection-idle-timeout: "60"
+    labels:
+      app.kubernetes.io/name: ingress-nginx
+      app.kubernetes.io/part-of: ingress-nginx
+  extraArgs:
+      enable-ssl-passthrough: ""
