@@ -4,16 +4,16 @@ kind: Deployment
 metadata:
   name: my-nginx
   labels:
-    app: my-nginx
+    run: my-nginx
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: my-nginx
+      run: my-nginx
   template:
     metadata:
       labels:
-        app: my-nginx
+        run: my-nginx
     spec:
       containers:
       - name: my-nginx
@@ -27,10 +27,10 @@ kind: Service
 metadata:
   name: my-nginx
   labels:
-    app: my-nginx
+    run: my-nginx
 spec:
   ports:
   - port: 80
     protocol: TCP
   selector:
-    app: my-nginx
+    run: my-nginx
