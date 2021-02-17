@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: ingress-nginx
-  namespace: ingress-nginx
+  namespace: default
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
@@ -36,3 +36,4 @@ spec:
     automated:
       prune: true
       selfHeal: true
+      allowEmpty: true
