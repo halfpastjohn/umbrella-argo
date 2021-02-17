@@ -3,10 +3,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: my-nginx
-  labels:
-    run: my-nginx
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       run: my-nginx
@@ -30,9 +28,9 @@ metadata:
     run: my-nginx
 spec:
   ports:
-  - name: http
-    port: 80
+  - port: 80
     targetPort: 8080
     protocol: TCP
+    name: http
   selector:
     run: my-nginx
