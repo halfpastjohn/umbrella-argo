@@ -4,7 +4,7 @@ kind: Deployment
 metadata:
   name: tea
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: tea
@@ -17,7 +17,7 @@ spec:
       - name: tea
         image: pleshakov/tea
         ports:
-        - containerPort: 8888
+        - containerPort: 8080
 ---
 apiVersion: v1
 kind: Service
@@ -25,8 +25,8 @@ metadata:
   name: tea-svc
 spec:
   ports:
-  - port: 8888
-    targetPort: 8888
+  - port: 80
+    targetPort: 8080
     protocol: TCP
     name: http
   selector:
@@ -50,7 +50,7 @@ spec:
       - name: coffee
         image: pleshakov/coffee
         ports:
-        - containerPort: 8880
+        - containerPort: 8080
 ---
 apiVersion: v1
 kind: Service
@@ -58,8 +58,8 @@ metadata:
   name: coffee-svc
 spec:
   ports:
-  - port: 8880
-    targetPort: 8880
+  - port: 80
+    targetPort: 8080
     protocol: TCP
     name: http
   selector:
