@@ -17,7 +17,7 @@ spec:
       - name: tea
         image: pleshakov/tea
         ports:
-        - containerPort: 8080
+        - containerPort: 8888
 ---
 apiVersion: v1
 kind: Service
@@ -25,8 +25,8 @@ metadata:
   name: tea-svc
 spec:
   ports:
-  - port: 80
-    targetPort: 8080
+  - port: 8888
+    targetPort: 8888
     protocol: TCP
     name: http
   selector:
@@ -50,7 +50,7 @@ spec:
       - name: coffee
         image: pleshakov/coffee
         ports:
-        - containerPort: 8080
+        - containerPort: 8888
 ---
 apiVersion: v1
 kind: Service
@@ -58,8 +58,8 @@ metadata:
   name: coffee-svc
 spec:
   ports:
-  - port: 80
-    targetPort: 8080
+  - port: 8888
+    targetPort: 8888
     protocol: TCP
     name: http
   selector:
