@@ -50,7 +50,7 @@ spec:
       - name: coffee
         image: pleshakov/coffee
         ports:
-        - containerPort: 8888
+        - containerPort: 8000
 ---
 apiVersion: v1
 kind: Service
@@ -58,8 +58,8 @@ metadata:
   name: coffee-svc
 spec:
   ports:
-  - port: 8888
-    targetPort: 8888
+  - port: 8000
+    targetPort: 8000
     protocol: TCP
     name: http
   selector:
