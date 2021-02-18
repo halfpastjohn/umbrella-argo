@@ -6,12 +6,15 @@ metadata:
 spec:
   destination:
     server: https://kubernetes.default.svc
-    namespace: default
+    namespace: kube-system
   project: default
   source:
-    chart: traefik
-    repoURL: https://helm.traefik.io/traefik
-    targetRevision: 9.14.2
+    # chart: traefik
+    # repoURL: https://helm.traefik.io/traefik
+    # targetRevision: 9.14.2
+    path: deployments/traefik
+    repoURL: https://github.com/halfpastjohn/umbrella-argo.git
+    targetRevision: HEAD
   syncPolicy:
     automated:
       prune: true
