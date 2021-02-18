@@ -8,7 +8,7 @@ metadata:
 spec:
   destination:
     server: https://kubernetes.default.svc
-    namespace: default
+    namespace: monitoring
   project: default
   source:
     chart: prometheus
@@ -23,3 +23,5 @@ spec:
       prune: true
       selfHeal: true
       allowEmpty: true
+    syncOptions:
+    - CreateNamespace=true
